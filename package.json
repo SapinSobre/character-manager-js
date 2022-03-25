@@ -1,0 +1,26 @@
+{
+  "name": "character-manager-js",
+  "version": "1.0.0",
+  "description": "[Github page]: https://SapinSobre.github.io/character-manager-js/ [Github page]",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./style/sass/style.scss:./style/css/style.css ./pages/character/character.scss:./pages/character/character.css ./pages/createEditDeleteCharacter/createEditDeleteCharacter.scss:./pages/createEditDeleteCharacter/createEditDeleteCharacter.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SapinSobre/character-manager-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SapinSobre/character-manager-js/issues"
+  },
+  "homepage": "https://github.com/SapinSobre/character-manager-js#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "postman": "^0.2.0",
+    "sass": "^1.49.7",
+    "startbootstrap-heroic-features": "^5.0.4"
+  }
+}

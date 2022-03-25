@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New character</title>
+        <meta charset="utf-8">
+        <link href="../../style/css/style.css" rel="stylesheet" type="text/css">
+        <link href="./createEditDeleteCharacter.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <section class="main">
+            <header class="header">
+                <h1 class="header_title" id="header_title"><a href="../../index.html" class="homeLink">Character manager</a></h1>
+            </header> 
+            <ol id="target">
+                <article class="characterVignette">
+                    <section class="form">
+                        <ol id="output">
+                           <img src="" alt="characterPhoto" id="photo">
+                        </ol>
+                        <input type="file" id="filepicker" name="fileList"/>
+                        <ul id="listing"></ul>
+                        <!--<input class="form_id" type="text" value="1">--> 
+                        <input class="form_name" type="text" value="Name">
+                        <input class="form_shortDescription" type="text" value="Short description">
+                        <input class="form_description" type="text" value="Description">
+                        <div class="form_buttons">
+                            <input class="form_saveSubmit" id="change" type="submit" value="Save changes">
+                            <input class="form_deleteSubmit" id="delete" type="submit" value="Delete changes">
+                        </div>                       
+                    </section>          
+                </article> 
+            </ol>
+        </section> 
+        <script src="../../scripts/CRUDCharacter.js"></script>        
+    </body>
+</html>
