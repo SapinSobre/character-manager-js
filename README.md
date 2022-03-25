@@ -1,1 +1,1 @@
-[ma page Github]: https://github.com
+[ma page Github]: https://sapinsobre.github.io/character-manager-js/
