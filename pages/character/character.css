@@ -97,17 +97,24 @@ body .main #target .characterVignette .buttonBox {
 body .main #target .characterVignette .buttonBox .updateButton {
   background-color: #4a7dfc;
   border-radius: 2vw 2vw;
-  border: none;
-  text-decoration: none;
   padding: 1vw;
+  width: 10vw;
+  border: none;
+}
+body .main #target .characterVignette .buttonBox .updateButton .updateButton_link {
+  text-decoration: none;
   color: white;
 }
 body .main #target .characterVignette .buttonBox .deleteButton {
   background: transparent;
   border: 1px solid #d7565e;
   border-radius: 2vw 2vw;
-  text-decoration: none;
   padding: 1vw;
+  width: 10vw;
+}
+body .main #target .characterVignette .buttonBox .deleteButton .deleteButton_link {
+  text-decoration: none;
+  color: #d7565e;
 }
 
 /*# sourceMappingURL=character.css.map */

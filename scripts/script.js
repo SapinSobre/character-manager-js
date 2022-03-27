@@ -1,7 +1,7 @@
 
  (() => {
-    const onloadFunction = async() => {     
-      const response = await fetch("https://character-database.becode.xyz/characters");
+    const displayAllCharacters = async() => {     
+      const response = await fetch("https://character-database.becode.xyz/characters/");
       const characters = await response.json();
       console.log(characters);
       let vignette = document.getElementById('characterVignette');      
@@ -16,12 +16,28 @@
          photo.setAttribute("src", `data:image/gif;base64,${characters[i].image}`);
          photo.setAttribute("alt", "hero's photo");
          let template = document.getElementById('target');
-         template.appendChild(clone);  
-         
+         template.appendChild(clone);           
          button.addEventListener("click", (e) => {
             e.target.setAttribute('href',`../pages/character/character.html?id=${characters[i].id}`);  
          })   
       }     
-   }     
-   document.onload = onloadFunction();    
+   } 
+   
+   const detailsByIdOrByName = async(idOrName) => {
+      console.log(idOrName);
+      let response;
+      if(isNaN(idOrName)){
+         window.location.href = `../pages/character/character.html?id=${idOrName}`;
+      }
+      else if(!isNaN(idOrName)){         
+         window.location.href = `../pages/character/character.html?name=${idOrName}`;
+      }     
+   }
+
+   document.onload = displayAllCharacters(); 
+   
+   document.querySelector(".header_searchInput").addEventListener("change", async(e) =>{
+      detailsByIdOrByName(e.target.value);
+   })
+
 })() 

@@ -1,67 +1,96 @@
 (() => {
 
-  document.getElementById("filepicker").addEventListener("change", function(event) {
-    let output = document.getElementById("listing");
-    let files = event.target.files;
-  
-    for (let i=0; i<files.length; i++) {
-      let item = document.createElement("li");
-      item.innerHTML = files[i].webkitRelativePath;
-      output.appendChild(item);
-      let image = document.getElementById('photo');
-      image.setAttribute('src', files[i].name);
-    };
-  }, false);
-  // your code here
- /* document.getElementById("change").addEventListener("click", () => {
-  
-   let inputs = Array.from(document.querySelectorAll("input"));
-    console.log(inputs);
-   let values = inputs.map(({ value }) => {
-      return value.trim();
-    });
+  const fillForm = async(id) => {    
+    let response = await fetch(`https://character-database.becode.xyz/characters/${id}`);
+    let character = await response.json();
+    let inputs = document.querySelectorAll('input');     
+    inputs[1].value = character.name;
+    inputs[2].value = character.shortDescription;
+    inputs[3].value = character.description; 
+    let imagePreview = document.querySelector(".imgPreview");
+    imagePreview.setAttribute("src", `data:image/gif;base64,${character.image}`);
+    imagePreview.setAttribute("alt", "hero's photo");
+  } 
 
-    if (values.some((value) => value === "")) {
-      alert("Please fill all fields.");
-      return;
-    }
-
-    let [name, shortDescription, description] = values; 
-
-   
-    console.log(
-      `Our new character in the database is ${name}. Short description : ${shortDescription} and the long description :  ${description}`
-    );*/
-
-    
-
-  /* const postData = await fetch("https://character-database.becode.xyz/characters", {
-      method: "POST",
+  const updateCharacter = async (id) => {
+    let resp = await fetch(`https://character-database.becode.xyz/characters/${id}`);
+    let charac = await resp.json();
+    let description = document.querySelector(".form_description").value;    
+    let name = document.querySelector(".form_name").value;
+    let shortDescription = document.querySelector('.form_shortDescription').value;
+     let reponse = await fetch(`https://character-database.becode.xyz/characters/${id}`, {
+      method: 'PUT',
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ description, id, img, name, shortDescription })
+    });   
+    console.log(reponse);
+  }
+ 
+  const addCharacter = async() => {
+    let description = document.querySelector('.form_description').value;
+    let id = null;
+    let image = "";
+    let name = document.querySelector('.form_name').value;   
+    let shortDescription = document.querySelector('.form_shortDescription').value;    
+    console.log(shortDescription);
+    let resp = await fetch("https://character-database.becode.xyz/characters/", {
+      method: 'POST',
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ description, id, image, name, shortDescription })
-    });
+    }); 
+    console.log(resp);
+   
+  }
 
-    console.log(postData);
-  })*/
+  const deleteCharacter = async(id) => {
+    const response = await fetch(`https://character-database.becode.xyz/characters/${id}`, {
+      method: "DELETE"
+    });  
+    if (!response.ok) {
+      throw new Error("No hero with that ID");
+    } 
+  } 
 
-  /*document.querySelector('.imageButton').addEventListener('click', () => {
-   
-   
-   
+  const encodeImageFileAsURL = (imgUrl) => {    
+      let fileReader = new FileReader();
+      fileReader.onload = (fileLoadedEvent) => {
+      let srcData = fileLoadedEvent.target.result; // <--- data: base64
+      //  console.log(srcData);
+      document.querySelector(".imgPreview").setAttribute('src', srcData);  
+      fileReader.readAsDataURL(imgUrl);
+      console.log(imgUrl);
+    }
+  }
+
+  
+  if(document.location.href.split("=").length === 1){
+    document.querySelector('.saveButton').addEventListener('click', async() => {
+      addCharacter();
+    })
+  }
+  else{
+    let idC  = document.location.href.split("=")[1];
+    fillForm(idC); 
+    document.querySelector('.saveButton').addEventListener('click', async() => {
+      updateCharacter(idC);
+    })
+  }
+
+  /*document.querySelector('.filePicker').addEventListener('change', (e) => {
+    
+    var objectURL = window.URL.createObjectURL(e.target.files[0]).split('5500/')[1].createObjectURL();    */ 
+    /*  let file = e.target.files[0];
+      console.log(fileReader.readAsDataURL(file));    */   
+      //console.log(`encodeImageFileAsURL = ${url}`);
+        /*let img = document.querySelector('.imgPreview').setAttribute("src", `data:image/gif;base64,/9j/${objectURL}`);
+        window.URL.revokeObjectURL(objectURL);
   })*/
- /* document.getElementById('file-selector').addEventListener('change', async (e) => {
-      const fileList = e.target.files;
-      //let imagePath = `${fileList[0].name}`;
-     console.log(fileList)
-      let prev = document.querySelector('.imgPreview');
-      fileList[0].webkitRelativePath = "../images/jimmy.jpg";
-      console.log(fileList[0].webkitRelativePath);*/
-      /*  prev.setAttribute("style", `background-image: url("data:image/gif;base64,${image[0].name}");background-repeat: no-repeat; background-size: cover;`);
-  console.log(fileList);
-      const repertory = await window.showDirectoryPicker();
-      let image = await window.showOpenFilePicker();
-    console.log(repertory);
-    });*/
+ 
+  document.querySelector('.deleteButton').addEventListener('click', async() => { 
+    let idCharac  = document.location.href.split("=")[1]; 
+    deleteCharacter(idCharac);   
+  });
+   
 })()

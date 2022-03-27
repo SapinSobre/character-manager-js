@@ -72,14 +72,15 @@ body{
                     justify-content: space-between;
                     width: 100%;
                     margin-left: 0vw; 
-                    .file-selector{
-                        
+                    .filePicker{
+                        margin-left: 41.3vw;
+                        margin-top: 2vw;
+                        margin-bottom: 2vw;
                     }
                     .imgPreview{
                         margin-top: 1vw;
                         width: 150px;
                         height: 150px;
-                        border: 1px solid $white;
                         border-radius: 50%; 
                         margin-left: 40vw;                        
                     }
@@ -123,23 +124,28 @@ body{
                         padding: 0vw 2vw 0vw 2vw;
                         font-size: 1.4em;
                     }
-                    .form_buttons{
-                        .form_saveSubmit{
+                    .buttonBox{
+                        .saveButton{
                             background-color: $blueButton;
-                            border-radius: 2vw 2vw;
-                            border: none;
-                            text-decoration: none;
+                            border-radius: 2vw 2vw;                           
                             padding: 1vw;
                             width: 10vw;
-                            color: $white;
+                            border: none;
+                            .saveButton_link{                               
+                                text-decoration: none;
+                                color: $white;
+                            }
                         }
-                        .form_deleteSubmit{
+                        .deleteButton{
                             background : transparent;
                             border: 1px solid $redGradient;
-                            border-radius: 2vw 2vw;
-                            text-decoration: none;
+                            border-radius: 2vw 2vw;                            
                             padding: 1vw;
                             width: 10vw;
+                            .deleteButton_link{
+                                text-decoration: none;
+                                color: $redGradient;
+                            }
                         }
                     }
                     

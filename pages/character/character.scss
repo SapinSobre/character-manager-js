@@ -96,22 +96,28 @@ body{
                     color: $greyTextVignet;                   
                 }  
                 .buttonBox{
-                    margin-top: 8vw;
-                   
+                    margin-top: 8vw;                   
                     .updateButton{
                         background-color: $blueButton;
-                        border-radius: 2vw 2vw;
-                        border: none;
-                        text-decoration: none;
+                        border-radius: 2vw 2vw;                           
                         padding: 1vw;
-                        color: $white;
+                        width: 10vw;
+                        border: none;                    
+                        .updateButton_link{
+                            text-decoration: none;
+                            color: $white;
+                        }
                     }
                     .deleteButton{
                         background : transparent;
                         border: 1px solid $redGradient;
-                        border-radius: 2vw 2vw;
-                        text-decoration: none;
+                        border-radius: 2vw 2vw;                            
                         padding: 1vw;
+                        width: 10vw;
+                        .deleteButton_link{
+                            text-decoration: none;
+                            color: $redGradient;
+                        }
                     }
                 }                
             }  

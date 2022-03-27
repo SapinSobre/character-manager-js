@@ -73,11 +73,15 @@ body .main #target .characterVignette .form {
   width: 100%;
   margin-left: 0vw;
 }
+body .main #target .characterVignette .form .filePicker {
+  margin-left: 41.3vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
 body .main #target .characterVignette .form .imgPreview {
   margin-top: 1vw;
   width: 150px;
   height: 150px;
-  border: 1px solid white;
   border-radius: 50%;
   margin-left: 40vw;
 }
@@ -121,22 +125,27 @@ body .main #target .characterVignette .form .form_description {
   padding: 0vw 2vw 0vw 2vw;
   font-size: 1.4em;
 }
-body .main #target .characterVignette .form .form_buttons .form_saveSubmit {
+body .main #target .characterVignette .form .buttonBox .saveButton {
   background-color: #4a7dfc;
   border-radius: 2vw 2vw;
-  border: none;
-  text-decoration: none;
   padding: 1vw;
   width: 10vw;
+  border: none;
+}
+body .main #target .characterVignette .form .buttonBox .saveButton .saveButton_link {
+  text-decoration: none;
   color: white;
 }
-body .main #target .characterVignette .form .form_buttons .form_deleteSubmit {
+body .main #target .characterVignette .form .buttonBox .deleteButton {
   background: transparent;
   border: 1px solid #d7565e;
   border-radius: 2vw 2vw;
-  text-decoration: none;
   padding: 1vw;
   width: 10vw;
+}
+body .main #target .characterVignette .form .buttonBox .deleteButton .deleteButton_link {
+  text-decoration: none;
+  color: #d7565e;
 }
 
 /*# sourceMappingURL=createEditDeleteCharacter.css.map */
